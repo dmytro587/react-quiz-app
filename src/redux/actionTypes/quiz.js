@@ -1,0 +1,9 @@
+export const NEXT_QUESTION = 'NEXT_QUESTION'
+export const FINISH_QUIZ = 'FINISH_QUIZ'
+export const REPEAT_QUIZ = 'REPEAT_QUIZ'
+export const RESET_QUIZ = 'RESET_QUIZ'
+export const FETCH_QUIZ_SUCCESS = 'FETCH_QUIZ_SUCCESS'
+export const FETCH_QUIZ_ERROR = 'FETCH_QUIZ_ERROR'
+export const FETCH_QUIZ_START = 'FETCH_QUIZ_START'
+
+
