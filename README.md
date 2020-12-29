@@ -1,4 +1,4 @@
-##[Demo](https://react-quiz-app-8a8af.web.app/)
+[Demo](https://react-quiz-app-8a8af.web.app/)
 
 # Getting Started with Create React App
 
