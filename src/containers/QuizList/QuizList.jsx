@@ -11,14 +11,18 @@ const QuizList = ({ quizzes, isLoading, fetchQuizzes }) => {
       fetchQuizzes()
    }, [fetchQuizzes])
 
-   const quizList = quizzes.map(quiz => (
-      <Link
-         to={ `quiz/${quiz.id}` }
-         key={ quiz.id }
-      >
-         { quiz.name }
-      </Link>
-   ))
+   let quizList = null
+
+   if (quizzes.length > 0) {
+      quizList = quizzes.map(quiz => (
+         <Link
+            to={ `quiz/${quiz.id}` }
+            key={ quiz.id }
+         >
+            { quiz.name }
+         </Link>
+      ))
+   }
 
    if (isLoading) return <Preloader />
 
@@ -26,7 +30,7 @@ const QuizList = ({ quizzes, isLoading, fetchQuizzes }) => {
       <S.Wrapper>
          <S.Title>Список тестов</S.Title>
          <S.List>
-            { quizList }
+            { quizList || <S.Empty>Список пуст</S.Empty> }
          </S.List>
       </S.Wrapper>
    )

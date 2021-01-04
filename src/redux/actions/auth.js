@@ -1,5 +1,6 @@
 import { apiAuth } from '../../api/api'
 import { LOGIN_SUCCESS, LOGOUT } from '../actionTypes/auth'
+import { clearQuizzes } from './quizList'
 
 export const auth = (authData, isLogin) => async dispatch => {
    try {
@@ -24,12 +25,13 @@ export const auth = (authData, isLogin) => async dispatch => {
 
 const loginSuccess = token => ({ type: LOGIN_SUCCESS, payload: token })
 
-export const logout = () => {
+export const logout = () => dispatch => {
    localStorage.removeItem('token')
    localStorage.removeItem('userId')
    localStorage.removeItem('expirationDate')
 
-   return { type: LOGOUT }
+   dispatch(clearQuizzes())
+   dispatch({ type: LOGOUT })
 }
 
 const autoLogout = time => dispatch => {

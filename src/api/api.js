@@ -1,6 +1,6 @@
 import * as axios from 'axios'
 
-const API_KEY = 'AIzaSyDJU2Hxg5mx8tMsZuw25S5xB-59MJ3XF3o'
+const API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
 
 const instance = axios.create({
    baseURL: 'https://react-quiz-app-8a8af-default-rtdb.firebaseio.com/'
@@ -9,19 +9,22 @@ const instance = axios.create({
 export const apiQuiz = {
    fetchQuizzes: async () => {
       const token = localStorage.getItem('token')
-      const response = await instance.get(`quizzes.json?auth=${token}`)
+      const userId = localStorage.getItem('userId')
+      const response = await instance.get(`quizzes/${userId}/.json?auth=${token}&access_token=${token}`)
       return response.data
    },
 
    fetchQuiz: async id => {
       const token = localStorage.getItem('token')
-      const response = await instance.get(`quizzes/${id}/.json?auth=${token}`)
+      const userId = localStorage.getItem('userId')
+      const response = await instance.get(`quizzes/${userId}/${id}/.json?auth=${token}`)
       return response.data
    },
 
    setQuiz: async quiz => {
       const token = localStorage.getItem('token')
-      const response = await instance.post(`quizzes.json?auth=${token}`, quiz)
+      const userId = localStorage.getItem('userId')
+      const response = await instance.post(`quizzes/${userId}/.json?auth=${token}`, quiz)
       return response.data.name
    }
 }
@@ -44,4 +47,3 @@ export const apiAuth = {
       return response.data
    }
 }
-

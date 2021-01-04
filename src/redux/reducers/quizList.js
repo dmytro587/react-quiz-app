@@ -1,4 +1,4 @@
-import { FETCH_QUIZZES_ERROR, FETCH_QUIZZES_START, FETCH_QUIZZES_SUCCESS } from '../actionTypes/quizList'
+import { CLEAR_QUIZZES, FETCH_QUIZZES_ERROR, FETCH_QUIZZES_START, FETCH_QUIZZES_SUCCESS } from '../actionTypes/quizList'
 
 const initialState = {
    isLoading: false,
@@ -26,6 +26,9 @@ const quizListReducer = (state = initialState, action) => {
             isLoading: false,
             error: action.payload
          }
+
+      case CLEAR_QUIZZES :
+         return { ...state, quizzes: [] }
 
       default :
          return state
