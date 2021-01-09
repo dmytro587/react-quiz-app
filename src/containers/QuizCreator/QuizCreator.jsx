@@ -1,12 +1,13 @@
 import QuizCreatorForm from '../../components/QuizCreatorForm/QuizCreatorForm'
-import * as S from './styles'
 import { connect } from 'react-redux'
 import { createQuiz } from '../../redux/actions/quiz'
+import { Header } from '../../components/common/styles/Header'
+import * as S from './styles'
 
 const QuizCreator = ({ createQuiz }) => {
    return (
       <S.Wrapper>
-         <S.Title>Создание теста</S.Title>
+         <Header>Создание теста</Header>
          <QuizCreatorForm createQuiz={ createQuiz } />
       </S.Wrapper>
    )

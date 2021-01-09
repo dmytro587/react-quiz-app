@@ -1,5 +1,5 @@
 import { apiAuth } from '../../api/api'
-import { LOGIN_SUCCESS, LOGOUT } from '../actionTypes/auth'
+import { LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT } from '../actionTypes/auth'
 import { clearQuizzes } from './quizList'
 
 export const auth = (authData, isLogin) => async dispatch => {
@@ -9,7 +9,7 @@ export const auth = (authData, isLogin) => async dispatch => {
          ? await apiAuth.signIn(email, password)
          : await apiAuth.signUp(email, password)
 
-      const { idToken, localId, expiresIn } = response
+      const { idToken, localId, expiresIn } = response.data
       const expirationDate = Date.now() + (expiresIn * 1000)
 
       localStorage.setItem('token', idToken)
@@ -18,12 +18,13 @@ export const auth = (authData, isLogin) => async dispatch => {
 
       dispatch(loginSuccess(idToken))
       dispatch(autoLogout(expiresIn * 1000))
-   } catch (e) {
-      console.log(e)
+   } catch (error) {
+      dispatch(loginError(error))
    }
 }
 
 const loginSuccess = token => ({ type: LOGIN_SUCCESS, payload: token })
+const loginError = error => ({ type: LOGIN_ERROR, payload: error })
 
 export const logout = () => dispatch => {
    localStorage.removeItem('token')

@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components'
 import { darken } from 'polished'
 
 export const StyledButton = styled.button(({ styleType }) => {
-
    let bgColor = '#6C757D'
 
    if (styleType === 'primary') bgColor = '#007BFF'
@@ -15,18 +14,29 @@ export const StyledButton = styled.button(({ styleType }) => {
 
      font-family: inherit;
      font-size: 1rem;
-     text-transform: uppercase;
      font-weight: 500;
      color: #fff;
 
      border-radius: 10px;
-     border: none;
-     background-color: ${({ disabled }) => disabled ? darken(.1, bgColor) : bgColor };
+     border: 2px solid transparent;
+     background-color: ${bgColor};
      transition: background-color .25s linear;
-     cursor:pointer;
      
-     &:hover {
-       background-color: ${ darken(.1, bgColor) };
+     &:disabled {
+       background-color: ${darken(.2, bgColor)};
+     }
+     
+     &:focus {
+       border-color: #000;
+       outline: none;
+     }
+
+     &:not(:disabled) {
+       cursor: pointer;
+       
+       &:hover {
+         background-color: ${ darken(.1, bgColor) };
+       }
      }
    `
 })

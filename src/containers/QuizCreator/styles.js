@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  min-width: 400px;
+  width: 100%;
 `
 
 export const Title = styled.h3`

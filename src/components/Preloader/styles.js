@@ -30,7 +30,7 @@ export const Loader = styled.div`
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #fff;
+    background: #000;
     margin: -4px 0 0 -4px;
   }
   & div:nth-child(1) {

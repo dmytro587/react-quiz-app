@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
-export const Title = styled.h1`
-  margin-bottom: 30px;
-  font-size: 2rem;
-  color: #fff;
+export const Wrapper = styled.div`
+  width: 100%;
+`
+
+export const Container = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
 `

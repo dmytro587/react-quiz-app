@@ -3,10 +3,11 @@ import { FieldArray, Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
 import { StyledErrorMessage } from '../common/styles/StyledErrorMessage'
-import * as S from './styles'
 import { StyledField } from '../common/styles/StyledField'
 import SelectField from '../SelectField/SelectField'
 import Input from './Input/Input'
+import { Alert } from '../common/styles/Alert'
+import * as S from './styles'
 
 
 const generateAnswers = count => {
@@ -53,6 +54,7 @@ const validationSchema = Yup.object({
 const QuizCreatorForm = ({ createQuiz }) => {
    const [questions, setQuestions] = useState([])
    const [quizName, setQuizName] = useState(null)
+   const [isAlertDisplayed, setIsAlertDisplayed] = useState(false)
 
    const getQuiz = values => ({
       id: questions.length + 1,
@@ -62,9 +64,10 @@ const QuizCreatorForm = ({ createQuiz }) => {
    })
 
    const addQuestionHandler = (values, { resetForm }) => {
-      const { quizName: localQuizName, ...rest } = values
+      const { quizName: localQuizName, answerCount, ...rest } = values
 
       initialValues.quizName = localQuizName
+      initialValues.answerCount = answerCount
 
       setQuestions(prev => [
          ...prev,
@@ -74,7 +77,7 @@ const QuizCreatorForm = ({ createQuiz }) => {
       resetForm()
    }
 
-   const onSubmit = e => {
+   const createQuizHandler = e => {
       e.preventDefault()
 
       setQuestions([])
@@ -84,10 +87,13 @@ const QuizCreatorForm = ({ createQuiz }) => {
          quizName,
          questions
       })
+
+      setIsAlertDisplayed(true)
+      setTimeout(() => setIsAlertDisplayed(false), 2000)
    }
 
    const answerCountHandler = (count, formik) => {
-      initialValues.answers = generateAnswers(+count)
+      initialValues.answers = generateAnswers(Number(count))
       formik.resetForm()
    }
 
@@ -100,7 +106,7 @@ const QuizCreatorForm = ({ createQuiz }) => {
          validateOnChange={true}
       >
          { ({ values, errors, ...formik }) => (
-            <Form>
+            <S.StyledForm>
                <Field
                   name="answerCount"
                   component={ SelectField }
@@ -152,12 +158,14 @@ const QuizCreatorForm = ({ createQuiz }) => {
                </S.Button>
                <S.Button
                   styleType="success"
-                  onClick={ e => onSubmit(e) }
+                  onClick={ createQuizHandler }
                   disabled={ questions.length === 0 }
                >
                   Создать тест
                </S.Button>
-            </Form>
+
+               { isAlertDisplayed && <Alert type="success">Тест создан. Перейдите в список тестов чтобы увидеть его!</Alert> }
+            </S.StyledForm>
          ) }
       </Formik>
    )

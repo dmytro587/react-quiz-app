@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchQuizzes } from '../../redux/actions/quizList'
 import Preloader from '../../components/Preloader/Preloader'
+import { Header } from '../../components/common/styles/Header'
 import * as S from './styles'
 
 const QuizList = ({ quizzes, isLoading, fetchQuizzes }) => {
@@ -28,7 +29,7 @@ const QuizList = ({ quizzes, isLoading, fetchQuizzes }) => {
 
    return (
       <S.Wrapper>
-         <S.Title>Список тестов</S.Title>
+         <Header>Список тестов</Header>
          <S.List>
             { quizList || <S.Empty>Список пуст</S.Empty> }
          </S.List>

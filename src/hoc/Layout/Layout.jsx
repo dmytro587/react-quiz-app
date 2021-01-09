@@ -7,6 +7,7 @@ const Layout = ({ children, isAuthorized }) => (
       <Navigation isAuthorized={ isAuthorized } />
 
       <main>
+         {/*<div>block</div>*/}
          { children }
       </main>
    </S.Layout>

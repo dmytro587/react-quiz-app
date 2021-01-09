@@ -31,19 +31,15 @@ export const apiQuiz = {
 
 export const apiAuth = {
    signIn: async (email, password) => {
-      const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, {
+      return await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, {
          email, password,
          returnSecureToken: true
       })
-
-      return response.data
    },
    signUp: async (email, password) => {
-      const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`, {
-         email, password,
-         returnSecureToken: true
+      return await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`, {
+        email, password,
+        returnSecureToken: true
       })
-
-      return response.data
    }
 }

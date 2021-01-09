@@ -48,19 +48,22 @@ const AuthForm = ({ auth }) => {
                   $isInvalid={ errors.password && touched.password }
                />
 
-               <StyledButton
-                  styleType="success"
-                  type="submit"
-                  disabled={ !(rest.isValid && rest.dirty) }
-               >
-                  Войти
-               </StyledButton>
-               <StyledButton
-                  styleType="primary"
-                  onClick={ e => registerHandler(e, values) }
-               >
-                  Зарегистрироваться
-               </StyledButton>
+               <div style={{ textAlign: 'center' }}>
+                  <StyledButton
+                     styleType="success"
+                     type="submit"
+                     disabled={ !(rest.isValid && rest.dirty) }
+                  >
+                     Войти
+                  </StyledButton>
+                  <StyledButton
+                     styleType="primary"
+                     disabled={ !(rest.isValid && rest.dirty) }
+                     onClick={ e => registerHandler(e, values) }
+                  >
+                     Зарегистрироваться
+                  </StyledButton>
+               </div>
             </Form>
          )}
       </Formik>

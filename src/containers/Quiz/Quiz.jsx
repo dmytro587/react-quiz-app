@@ -8,6 +8,7 @@ import AnswerList from '../../components/AnswerList/AnswerList'
 import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz'
 import Preloader from '../../components/Preloader/Preloader'
 import * as S from './styles'
+import { Header } from '../../components/common/styles/Header'
 
 
 const Quiz = ({
@@ -35,7 +36,7 @@ const Quiz = ({
 
    return (
       <S.Wrapper>
-         <S.Title>{ quizName }</S.Title>
+         <Header>{ quizName }</Header>
 
          { isFinished
             ? <FinishedQuiz

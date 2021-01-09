@@ -10,19 +10,25 @@ const SelectField = ({
 }) => {
 
    const getValue = () => {
-      if (field.name === 'answerCount') return options.find(option => option.value === field.value)
+      if (field.name === 'answerCount') {
+         return options.find(option => option.value === field.value)
+      }
       return options.find(option => option.value === field.value) || ''
    }
 
    return (
       <Select
          styles={{
-            control: (base) => ({
+            control: base => ({
                ...base,
                margin: '10px 0',
                zIndex: '0',
-               border: `2px solid ${isInvalid && '#f00'}`
-            })
+               fontSize: '.9rem',
+               borderColor: '#dcdcdc',
+               borderWidth: '2px',
+               border: `2px solid ${isInvalid && '#f00'}`,
+            }),
+
          }}
          options={ options }
          name={ field.name }

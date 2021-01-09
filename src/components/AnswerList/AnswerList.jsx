@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import * as S from './styles'
 
 const AnswerList = ({ question, answers, questionsCount, currentQuestion, onAnswerClick }) => {
@@ -17,7 +16,7 @@ const AnswerList = ({ question, answers, questionsCount, currentQuestion, onAnsw
    ))
 
    return (
-      <Fragment>
+      <S.Wrapper>
          <S.Title>{ question }</S.Title>
 
          <S.Counter>
@@ -27,7 +26,7 @@ const AnswerList = ({ question, answers, questionsCount, currentQuestion, onAnsw
          <S.List>
             { answersList }
          </S.List>
-      </Fragment>
+      </S.Wrapper>
    )
 }
 
