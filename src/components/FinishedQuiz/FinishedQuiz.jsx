@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
-import * as S from './styles'
 import { StyledButton } from '../common/styles/Button'
+import * as S from './styles'
 
 const FinishedQuiz = ({ results, questions, repeatQuiz, history }) => {
 

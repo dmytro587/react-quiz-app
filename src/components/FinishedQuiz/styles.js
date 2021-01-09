@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const QuestionWrapper = styled.div`
   padding: 15px;
-  margin-bottom: 15px;
+  max-width: 400px;
+  margin: 0 auto 15px;
   border: 1px solid #fff;
   border-radius: 10px;
 `
